@@ -86,6 +86,7 @@
     <None Include="aiml\RussianLocalization\Russian.aiml" />
     <None Include="App.config" />
     <None Include="CLIPSDLL\CLIPSCLRWrapper.dll.metagen" />
+    <None Include="CLIPSfiles\cars_all_available.clp" />
     <None Include="config\bot_key" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -105,6 +106,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>XCOPY "$(ProjectDir)aiml" "$(TargetDir)aiml" /E /I /F /Y /D
-XCOPY "$(ProjectDir)config" "$(TargetDir)config" /E /I /F /Y /D</PreBuildEvent>
+XCOPY "$(ProjectDir)config" "$(TargetDir)config" /E /I /F /Y /D
+XCOPY "$(ProjectDir)CLIPSfiles" "$(TargetDir)CLIPSfiles" /E /I /F /Y /D</PreBuildEvent>
   </PropertyGroup>
 </Project>
