@@ -61,6 +61,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".gitignore" />
     <None Include="aiml\RussianLocalization\ExtandRussian.aiml" />
     <None Include="aiml\RussianLocalization\Russian.aiml" />
     <None Include="App.config" />
