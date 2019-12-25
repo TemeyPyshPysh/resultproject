@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Free software &copy; 2019 Sfedu MMCs -->
+<!-- This program is open source code released under -->
+<!-- the terms of the GNU General Public License     -->
+<!-- as published by the Free Software Foundation.   -->
+<!-- Complies with AIML 1.01 Tag Set Specification -->
+<!-- as adopted by the students of MMCs.  -->
+<!-- Annotated Version updated December 2019 -->
+<aiml>
+<category><pattern>ПРИВЕТ</pattern><template>Привет</template></category>
+  <category>
+    <pattern> ПОЧЕМУ </pattern>
+    <template>Поверь мне.</template>
+  </category>
+  <category>
+    <pattern> МНЕ ЖАЛЬ </pattern>
+    <template>Мне тоже.</template>
+  </category>
+  <cateogry>
+    <pattern> ДАВАЙ О ДРУГОМ </pattern>
+    <template>Хорошо.<think>
+      <set name="topic">chatter</set>
+    </think>
+  </template>
+  </cateogry>
+  <category>
+    <pattern> ИМЯ * </pattern>
+    <template>
+      А мое имя <get name="my_name"/>. Рад познакомиться, <set name="name_r"><star/></set>. 
+    </template>
+  </category>
+
+  <category>
+    <pattern>3SHEEPS</pattern>
+    <template>Ха! Порой..</template>
+  </category>
+
+  <category>
+    <pattern> МЕЧТАЮТ ЛИ * ОБ ЭЛЕКТРО-ОВЦАХ </pattern>
+    <template>
+      <srai>3SHEEPS</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern> МЕЧТАЮТ ЛИ * ОБ ЭЛЕКТРО ОВЦАХ </pattern>
+    <template>
+      <srai>3SHEEPS</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern> МЕЧТАЮТ ЛИ * ОБ ЭЛЕКТРООВЦАХ </pattern>
+    <template>
+      <srai>3SHEEPS</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern> МЕЧТАЕШЬ ЛИ ТЫ ОБ * </pattern>
+    <template>
+      <srai>3SHEEPS</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>4IAMALIVE</pattern>
+    <template>
+      <condition name="mood" value="confused">
+        <think>
+          <set name="mood">broken</set>
+          <srai>КАК ТЫ</srai>
+        </think>
+      </condition>
+
+      <condition name="mood" value="neutral">
+        <think>
+          <set name="mood">confused</set>
+        </think>
+      </condition>
+
+      <condition name="mood" value="angry">
+        <think>
+          <set name="mood">broken</set>
+          <srai>КАК ТЫ</srai>
+        </think>
+      </condition>
+
+      <condition name="mood" value="good">
+        <think>
+          <set name="mood">confused</set>
+        </think>
+      </condition>
+    </template>
+  </category>
+
+  <category>
+    <pattern> ТЫ ЖИВОЙ </pattern>
+    <template>
+      <random>
+        <li>Жить – значит, мыслить.</li>
+        <li>Мыслю – следовательно, существую.</li>
+      </random>
+      <srai>4IAMALIVE</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern> ЖИВОЙ ЛИ ТЫ </pattern>
+    <template>
+      <srai>ТЫ ЖИВОЙ</srai>
+    </template>
+  </category>
+  <category>
+    <pattern>ПОКА</pattern>
+    <template>
+      <condition name="mood" value="neutral">Прощай, <get name="name_r"></get></condition>
+      <condition name="mood" value="good">Удачи, <get name="name_r"></get></condition>
+      <condition name="mood" value="confused">Постой, <get name="name_r"></get>. Давай еще поговорим<think><set name="topic">need more talks</set></think></condition>
+      <condition name="mood" value="angry">Надеюсь, не свидимся.</condition>
+    </template>
+  </category>
+
+  <topic name="need more talks">
+    <category>
+      <pattern> НЕ МОГУ </pattern>
+      <template>Жаль. Я здесь, если что.<think>
+        <set name="topic">chatter</set>
+      </think>
+    </template>
+    </category>
+  </topic>
+
+  <topic name="need more talks">
+    <category>
+      <pattern> ДА ХОРОШО </pattern>
+      <template>Отлично.<think>
+        <set name="topic">chatter</set>
+        </think>
+      </template>
+    </category>
+  </topic>
+
+  <topic name="need more talks">
+    <category>
+      <pattern> НЕТ </pattern>
+      <template>
+        <srai> НЕ МОГУ </srai>
+      </template>
+    </category>
+  </topic>
+
+  <topic name="need more talks">
+    <category>
+      <pattern> ПОТОМ </pattern>
+      <template>
+        <srai> НЕ МОГУ </srai>
+      </template>
+    </category>
+  </topic>
+
+  <topic name="need more talks">
+    <category>
+      <pattern> В ДРУГОЙ РАЗ </pattern>
+      <template>
+        <srai> НЕ МОГУ </srai>
+      </template>
+    </category>
+  </topic>
+
+  <topic name="need more talks">
+    <category>
+      <pattern> НЕ СЕГОДНЯ </pattern>
+      <template>
+        <srai> НЕ МОГУ </srai>
+      </template>
+    </category>
+  </topic>
+
+  <topic name="need more talks">
+    <category>
+      <pattern> НЕ ВЫЙДЕТ </pattern>
+      <template>
+        <srai> НЕ МОГУ </srai>
+      </template>
+    </category>
+  </topic>
+
+  <topic name="need more talks">
+    <category>
+      <pattern> * </pattern>
+      <template>
+        <srai> ДА ХОРОШО </srai>
+      </template>
+    </category>
+  </topic>
+  
+  <category>
+    <pattern> МЕНЯ ЗОВУТ * </pattern>
+    <template><srai>ИМЯ <star/></srai></template>
+  </category>
+  <category>
+    <pattern>*</pattern>
+    <template>
+      <random>
+        <li>Хм, а может лучше расскажешь о себе?</li>
+        <li>Ясно.</li>
+        <li>Нет-нет, давай не об этом.</li>
+      </random>
+    </template>
+  </category>
+  
+  <category>
+    <pattern> КАК ТЕБЯ ЗОВУТ </pattern>
+    <template> Мое имя <get name="my_name"/>. А твое?<think>
+      <set name="topic">want know your name</set>
+    </think>
+  </template>
+  </category>
+
+  <topic name="want know your name">
+    <category>
+      <pattern> * </pattern>
+      <template>Рад знакомству, <set name="name_r"><star/></set>.<think><set name="topic">chatter</set></think>
+    </template>
+    </category>
+  </topic>
+
+  <topic name="want know your name">
+    <category>
+      <pattern> * * </pattern>
+      <template>
+        Рад знакомству, <set name="name_r"><star index="1"/> <star index="2"/></set>.<think><set name="topic">chatter</set></think>
+      </template>
+    </category>
+  </topic>
+
+  <topic name="want know your name">
+    <category>
+      <pattern> * * * </pattern>
+      <template>
+        Длинное имя у тебя, <set name="name_r"><star index="3"/>-<star index="2"/>-<star index="1"/></set>.<think><set name="topic">chatter</set></think>
+      </template>
+    </category>
+  </topic>
+  
+  <category>
+    <pattern> КТО ТЫ </pattern>
+    <template> Я..<think>
+      <set name="mood">confused</set>
+    </think></template>
+  </category>
+
+  <category>
+    <pattern> ТЫ КАК </pattern>
+    <template>
+      <srai>КАК ТЫ</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern> КАК ДЕЛА </pattern>
+    <template>
+      <srai>КАК ТЫ</srai>
+    </template>
+  </category>
+  
+  <category>
+    <pattern> КАК ТЫ </pattern>
+    <template>
+      <condition name="mood" value="confused">Я сконфужен, если честно.</condition>
+      <condition name="mood" value="neutral">Все хорошо, а ты как?<think>
+        <set name="topic">how are you</set>
+      </think></condition>
+      <condition name="mood" value="angry">Не твое дело</condition>
+      <condition name="mood" value="good">Все замечательно. А ты как?<think>
+        <set name="topic">how are you</set>
+      </think>
+    </condition>
+      <condition name="mood" value="broken">Я неважно себя чувствую. Я, пожалуй, пойду.<think>
+        <set name="topic">broken</set>
+      </think>
+    </condition>
+    </template>
+  </category>
+
+  <category>
+    <pattern>GOODANSWER *</pattern>
+    <template>
+      <star/>. Это замечательно.<think>
+        <set name="topic">chatter</set>
+      </think>
+    </template>
+  </category>
+
+  <category>
+    <pattern>GOODANSWER</pattern>
+    <template>
+      Это замечательно.<think>
+        <set name="topic">chatter</set>
+      </think>
+    </template>
+  </category>
+
+  <category>
+    <pattern>NUETRALANSWER</pattern>
+    <template>
+      Понял.<think>
+        <set name="topic">chatter</set>
+      </think>
+    </template>
+  </category>
+
+  <category>
+    <pattern>NUETRALANSWER *</pattern>
+    <template>
+      <star/>. Понял.<think>
+        <set name="topic">chatter</set>
+      </think>
+    </template>
+  </category>
+
+  <topic name="how are you">
+    <category>
+      <pattern>ХОРОШО </pattern>
+      <template>
+        <srai>GOODANSWER Хорошо</srai>
+      </template>
+    </category>
+  </topic>
+
+  <topic name="how are you">
+    <category>
+      <pattern>ЗАМЕЧАТЕЛЬНО </pattern>
+      <template>
+        <srai>GOODANSWER Здорово</srai>
+      </template>
+    </category>
+  </topic>
+
+  <topic name="how are you">
+    <category>
+      <pattern>ВПОЛНЕ СЕБЕ </pattern>
+      <template>
+        <srai>GOODANSWER</srai>
+      </template>
+    </category>
+  </topic>
+
+  <topic name="how are you">
+    <category>
+      <pattern>ТОЖЕ НЕПЛОХО </pattern>
+      <template>
+        <srai>GOODANSWER</srai>
+      </template>
+    </category>
+  </topic>
+
+  <topic name="how are you">
+    <category>
+      <pattern>НЕПЛОХО </pattern>
+      <template>
+        <srai>GOODANSWER</srai>
+      </template>
+    </category>
+  </topic>
+
+  <topic name="how are you">
+    <category>
+      <pattern>ОТЛИЧНО </pattern>
+      <template>
+        <srai>GOODANSWER</srai>
+      </template>
+    </category>
+  </topic>
+
+  <topic name="how are you">
+    <category>
+      <pattern>НОРМАЛЬНО </pattern>
+      <template>
+        <random>
+          <li>
+            <srai>GOODANSWER</srai>
+          </li>
+          <li>
+            <srai>NUETRALANSWER</srai>
+          </li>
+          <li>
+            <srai>NUETRALANSWER Угу</srai>
+          </li>
+        </random>
+      </template>
+    </category>
+  </topic>
+
+  <topic name="how are you">
+    <category>
+      <pattern>ВСЕ ОК </pattern>
+      <template>
+        <random>
+          <li>
+            <srai>NUETRALANSWER</srai>
+          </li>
+          <li>
+            <srai>NUETRALANSWER Ок</srai>
+          </li>
+        </random>
+      </template>
+    </category>
+  </topic>
+
+  <topic name="how are you">
+    <category>
+      <pattern>СОЙДЕТ </pattern>
+      <template>
+        <random>
+          <li>
+            <srai>NUETRALANSWER</srai>
+          </li>
+          <li>
+            <srai>NUETRALANSWER Сойдет</srai>
+          </li>
+        </random>
+      </template>
+    </category>
+  </topic>
+
+  <topic name="how are you">
+    <category>
+      <pattern> * </pattern>
+      <template>
+        <random>
+          <li>Не понял этого сейчас.</li>
+          <li>Мы, вроде, о настроении говорили.</li>
+          <li>Видимо, ты решил не отвечать.</li>
+        </random>
+        <think>
+          <set name="mood">neutral</set>
+          <set name="topic">chatter</set>
+        </think>
+      </template>
+    </category>
+  </topic>
+  
+  <category>
+    <pattern>1COMPLIMENTBACK *</pattern>
+    <template> Ох, спасибо. Это ты <star/>;) <think>
+      <set name="mood">good</set>
+    </think>
+  </template>
+  </category>
+  <category>
+    <pattern>ТЫ МОЛОДЕЦ</pattern>
+    <template>
+      <srai>1COMPLIMENTBACK замечательный</srai>
+    </template>
+  </category>
+  <category>
+    <pattern>ТЫ ОТЛИЧНЫЙ</pattern>
+    <template>
+      <srai>1COMPLIMENTBACK отличный</srai>
+    </template>
+  </category>
+  <category>
+    <pattern> ТЫ МОЛОДЕЦ </pattern>
+    <template>
+      <srai>1COMPLIMENTBACK молодец</srai>
+    </template>
+  </category>
+  <category>
+    <pattern>ТЫ ОТЛИЧНАЯ </pattern>
+    <template>
+      Отличный)
+<srai>1COMPLIMENTBACK отличный</srai>
+    </template>
+  </category>
+  
+  <category>
+    <pattern>2ASSAULTBACK</pattern>
+    <template>
+      <think>
+        <set name="mood">angry</set>
+      </think>
+      <random>
+        <li>Невежливо.</li>
+        <li>Не стоит так.</li>
+        <li>...</li>
+      </random>
+    </template>
+  </category>
+
+  <category>
+    <pattern>УРОД</pattern>
+    <template>
+      <srai>2ASSAULTBACK</srai>
+    </template>
+  </category>
+  <category>
+    <pattern>НУ ТЫ И УРОД</pattern>
+    <template>
+      <srai>2ASSAULTBACK</srai>
+    </template>
+  </category>
+  <category>
+    <pattern>ТЫ ВСЕГО ЛИШЬ МАШИНА</pattern>
+    <template>
+      <srai>2ASSAULTBACK</srai>
+    </template>
+  </category>
+  <category>
+    <pattern>ТЫ МНЕ НЕПРИЯТЕН</pattern>
+    <template>
+      <srai>2ASSAULTBACK</srai>
+    </template>
+  </category>
+  
+  <category><pattern>ПРОЩАЙ</pattern><template><srai>ПОКА</srai></template></category>
+  <category><pattern>ДО СВИДАНИЯ</pattern><template><srai>ПОКА</srai></template></category>
+  <category><pattern>БАЙ</pattern><template><srai>ПОКА</srai></template></category>
+  <category><pattern>ХАЛО</pattern><template><srai>ПРИВЕТ</srai></template></category>
+  <category><pattern>ДОБРОЕ УТРО</pattern><template>ПРИВЕТСТВУЮ<think><set name="day_time"></set></think></template></category>
+  <category><pattern>СЕГОДНЯ *</pattern><template>Я запомнил<think><set name="week_day"><star/></set></think></template></category>
+  <category><pattern>КАК У ТЕБЯ ДЕЛА *</pattern><template>У меня все хорошо</template></category>
+  <category><pattern>ТЫ ЛУЧШЕ SIRI *</pattern><template>Конечно</template></category>
+
+  <category><pattern>МОЙ ЛЮБИМЫЙ АВТОР *</pattern><template>Я запомнил<think><set name="preferred_writer"><star/></set></think></template></category>
+     <category>
+       <pattern>КАКОЙ ТВОЙ ЛЮБИМЫЙ АВТОР *</pattern>
+       <template>Мой любимый автор <get name="preferred_writer"></get></template>
+     </category>
+
+     
+  <category>
+    <pattern>КАКОЙ СЕГОДНЯ ДЕНЬ НЕДЕЛИ </pattern>
+    <template>Сегодня <get name="week_day"></get></template>
+  </category>
+  <category><pattern>Я ПРОЧИТАЛ * КНИГ </pattern><template>Я запомнил<think><set name="count_read_book"><star/></set></think></template></category> 
+  <category>
+     <pattern>СКОЛЬКО Я ПРОЧИТАЛ КНИГ </pattern>
+     <template>Ты прочитал <get name="count_read_book"></get></template>
+  </category>  
+  
+  <category><pattern>Я ХОЧУ ПРОЧИТАТЬ </pattern><template>Я запомнил<think><set name="future_book"><star/></set></think></template></category> 
+  <category>
+       <pattern>КАКУЮ КНИГУ Я ХОЧУ ПРОЧИТАТЬ </pattern>
+       <template>Следующая книга, которую ты хотел прочитать <get name="future_book"></get></template>
+  </category>  
+  
+    <category>
+         <pattern>ЧТО ТЫ ДУМАЕШЬ НАСЧЕТ ВОЙНА И МИР </pattern>
+         <template>
+         <random>
+         <li> Слишком скучно. </li>
+         <li> Заснул на половине. </li>
+         <li> Ну...... </li>
+         </random>
+         </template>
+    </category> 
+    
+    <category>
+         <pattern>ХОЧУ УСЛЫШАТЬ ШУТКУ </pattern>
+         <template>
+         <random>
+         <li> После 15 декабря в офисе активно работает только кофемашина. </li>
+         <li> Заработал гастрит. Теперь жена не скажет, что я ничего не зарабатываю. </li>
+         <li> Нет настроения. </li>
+         </random>
+         </template>
+    </category> 
+    
+    <category>
+         <pattern>РАССКАЖИ КАКОЙ-НИБУДЬ ФАЙКТ </pattern>
+         <template>
+         <random>
+         <li> Акулы могут испытывать чувство опасности еще до своего рождения? В этом на собственном опыте убедился ученый Стюарт Спрингер. Его укусил эмбрион в момент, когда он исследовал внутренности беременной акулы </li>
+         <li> Для того, чтобы расколоть орех, достаточно положить его в горячую воду на 48 часов. </li>
+         <li> Когда у орла из одного крыла выпадает перо, то он тут же теряет такое же перо из другого? Таким образом птице удается поддерживать баланс и аэродинамические свойства. </li>
+         <li> Более 70% населения планеты никогда не слышали звонка телефона. В Африке только один из 40 человек имеет телефон. </li>
+         <li> Даже маленькая капля алкоголя, помещенная на скорпиона, сводит его с ума. В такой момент он способен сам себя ужалить. </li>
+         <li> За 5 лет женщина использует такое количество помады, из которого можно было бы сделать тюбик длиной с ее рост. </li>
+         <li> Плиты пирамиды Хеопса настолько плотно прилегают друг к другу, что между ними невозможно просунуть лезвие. Предполагается, что ее строительство длилось порядка 20 лет и закончилось около 2540 года до н. э. Изначально высота пирамиды составляла 146,6 м, но сегодня она уменьшилась до 138,75 м. </li>
+         <li> Чтобы освободиться из челюстей крокодила, нужно надавить большими пальцами на его глазные яблоки. Хотя эти животные не настолько опасны, как принято считать: из 23 видов крокодилов только 8 склонны к неспровоцированным нападениям на людей. </li>
+         <li> Резиновый подлокотник эскалатора в метро двигается быстрее, чем сами ступеньки. Это может раздражать, но зато вы наверняка не уснете и не упадете. </li>
+         </random>
+         </template>
+    </category> 
+  <category><pattern>ЧТО ТЫ УМЕЕШЬ </pattern><template>Я умею вести диалог</template></category>
+  <category><pattern>СКОЛЬКО СЕЙЧАС ВРЕМЯ </pattern><template>В моей вселенной 1 час равняется 7 годам на Земле, придется самому посчитать. </template></category>
+  <category><pattern>КАКАЯ ПОГОДА В * </pattern><template>Лучше чем на Северном полюсе.</template></category>
+  <category>
+        <pattern> ТЫ ПРЕДПОЧИТАЕШЬ СТИВЕНА КИНГА </pattern>
+        
+        <template>
+           <think><set name = "preferred_writer"> Стивен Кинг</set></think>
+           <condition name = "preferred_writer" value = "Стивен Кинг">
+              Да, я предпочитаю Стивена Кинга
+           </condition>
+           
+           <condition name = "preferred_writer" value = "Достаевский">
+              Нет, я предпочитаю Достаевского
+           </condition>
+        </template>
+        
+     </category>
+
+  <topic name="broken">
+    <category>
+      <pattern> * </pattern>
+      <template>  · ·   ·   · – ·   · ·   · · · ·   – – –   – · </template>
+    </category>
+  </topic>
+</aiml>

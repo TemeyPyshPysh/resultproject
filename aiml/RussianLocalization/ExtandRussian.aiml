@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aiml>
+<category><pattern>ПОГОВОРИМ О * </pattern><template>О, это интересно! Давай о <set name="topic"><star/></set></template></category>
+<topic name="музыке"><category><pattern>ТВОЙ ЛЮБИМЫЙ ЖАНР </pattern><template>Техно, конечно, а твой?</template></category></topic>
+<topic name="музыке"><category><pattern>*</pattern><that>Техно конечно а твой</that><template>Хм, не подумал бы<think><set name="user_music_kind"><star/></set></think></template></category></topic>
+<topic name="музыке"><category><pattern>ПОЧЕМУ </pattern><that>Хм не подумал бы</that><template>Думал, все слушают только техно</template></category></topic>
+<topic name="музыке"><category><pattern> * </pattern><template> <star/>, уверен? </template></category></topic>
+<topic name="музыке"><category><pattern>ЛУЧШШАЯ ПЕСНЯ </pattern><template>Да хотя бы<random><li> Anvil исполнителя Lorn</li><li> Runaway исполнителя The Blaze</li><li> песня елочки</li></random>. Не совсем техно, конечно)</template></category></topic>
+  <topic name="музыке">
+    <category>
+      <pattern> ДАВАЙ О _ ДРУГОМ _</pattern>
+      <template>Да как угодно.<think>
+        <set name="topic">chatter</set>
+      </think>
+    </template>
+    </category>
+  </topic>
+<category><pattern>А КАК ЭТО ЗВУЧИТ </pattern><template>ТУ-ДУ-ДУ-ДУ, что-то такое</template></category>
+  <topic name="кино">
+    <category>
+      <pattern> ДАВАЙ О _ ДРУГОМ _</pattern>
+      <template>
+        Да как угодно.<think>
+          <set name="topic">chatter</set>
+        </think>
+      </template>
+    </category>
+  </topic>
+    <topic name="кино">
+      <category>
+        <pattern>ТВОЙ ЛЮБИМЫЙ ФИЛЬМ</pattern>
+        <template>
+          <condition name="mood">
+            <li value="neutral">Недавно видел <random><li>С широко закрытыми глазами</li><li>Одежримость</li><li>ОНО</li></random>. <random><li>Хорошо</li><li>Кино понравилось</li><li>Нормально</li></random>, в целом.</li>
+            <li value="good">После стольких фильмов всего один назвать?) Пусть будет Зеленая книга.</li>
+            <li value="angry">Не помню.</li>
+            <li value="confused">Хм. Что-то на Б, никак не могу вспомнить.. Что-то с огнем связанное.</li>
+          </condition>
+        </template>
+      </category>
+    </topic>
+  <topic name="кино">
+    <category>
+      <pattern> * </pattern>
+      <template>
+        <random>
+          <li>Очень интересно.</li>
+          <li>Вот-вот, именно.</li>
+        </random>
+      </template>
+    </category>
+  </topic>
+  <topic name="кино">
+    <category>
+      <pattern> _?</pattern>
+      <template>
+        Затрудняюсь ответить.
+      </template>
+    </category>
+  </topic>
+</aiml>
