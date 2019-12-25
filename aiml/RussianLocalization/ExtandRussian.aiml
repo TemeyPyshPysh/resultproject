@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <aiml>
-<category><pattern>ПОГОВОРИМ О * </pattern><template>О, это интересно! Давай о <set name="topic"><star/></set></template></category>
+  <category>
+    <pattern> ДАВАЙ ПОГОВОРИМ О * </pattern>
+    <template>
+      <srai> ПОГОВОРИМ О <star/></srai>
+    </template>
+  </category>
+<category><pattern> ПОГОВОРИМ О * </pattern><template>О, это интересно! Давай о <set name="topic"><star/></set></template></category>
 <topic name="музыке"><category><pattern>ТВОЙ ЛЮБИМЫЙ ЖАНР </pattern><template>Техно, конечно, а твой?</template></category></topic>
 <topic name="музыке"><category><pattern>*</pattern><that>Техно конечно а твой</that><template>Хм, не подумал бы<think><set name="user_music_kind"><star/></set></think></template></category></topic>
 <topic name="музыке"><category><pattern>ПОЧЕМУ </pattern><that>Хм не подумал бы</that><template>Думал, все слушают только техно</template></category></topic>
@@ -18,7 +24,48 @@
 <category><pattern>А КАК ЭТО ЗВУЧИТ </pattern><template>ТУ-ДУ-ДУ-ДУ, что-то такое</template></category>
   <topic name="кино">
     <category>
-      <pattern> ДАВАЙ О _ ДРУГОМ _</pattern>
+      <pattern> ДАВАЙ О _ ДРУГОМ </pattern>
+      <template>
+        <srai> ДАВАЙ О ДРУГОМ </srai>
+      </template>
+    </category>
+  </topic>
+  <topic name="кино">
+    <category>
+      <pattern> ДАВАЙ О _ ДРУГОМ _ </pattern>
+      <template>
+        <srai> ДАВАЙ О ДРУГОМ </srai>
+      </template>
+    </category>
+  </topic>
+  <topic name="кино">
+    <category>
+      <pattern> КАКОЙ ТВОЙ ЛЮБИМЫЙ ФИЛЬМ </pattern>
+      <template>
+        <srai>ТВОЙ ЛЮБИМЫЙ ФИЛЬМ</srai>
+      </template>
+    </category>
+  </topic>
+  <topic name="кино">
+    <category>
+      <pattern> ЧТО ТЫ ЛЮБИШЬ СМОТРЕТЬ </pattern>
+      <template>
+        <srai>ТВОЙ ЛЮБИМЫЙ ФИЛЬМ</srai>
+      </template>
+    </category>
+  </topic>
+  <topic name="кино">
+    <category>
+      <pattern> ЛУЧШИЙ ФИЛЬМ </pattern>
+      <template>
+        <srai>ТВОЙ ЛЮБИМЫЙ ФИЛЬМ</srai>
+      </template>
+    </category>
+  </topic>
+  
+  <topic name="кино">
+    <category>
+      <pattern> ДАВАЙ О ДРУГОМ </pattern>
       <template>
         Да как угодно.<think>
           <set name="topic">chatter</set>
@@ -31,7 +78,7 @@
         <pattern>ТВОЙ ЛЮБИМЫЙ ФИЛЬМ</pattern>
         <template>
           <condition name="mood">
-            <li value="neutral">Недавно видел <random><li>С широко закрытыми глазами</li><li>Одежримость</li><li>ОНО</li></random>. <random><li>Хорошо</li><li>Кино понравилось</li><li>Нормально</li></random>, в целом.</li>
+            <li value="neutral">Недавно видел <random><li>С широко закрытыми глазами</li><li>Одежримость</li><li>ОНО</li></random>. <random><li>Хорошо снят</li><li>Кино понравилось</li><li>Интересно поставлен</li></random>, в целом.</li>
             <li value="good">После стольких фильмов всего один назвать?) Пусть будет Зеленая книга.</li>
             <li value="angry">Не помню.</li>
             <li value="confused">Хм. Что-то на Б, никак не могу вспомнить.. Что-то с огнем связанное.</li>
@@ -55,6 +102,55 @@
       <pattern> _?</pattern>
       <template>
         Затрудняюсь ответить.
+      </template>
+    </category>
+  </topic>
+
+  <topic name="машинах">
+    <category>
+      <pattern>CLIPSACTIVATED</pattern>
+      <template>
+        <think>
+          <set name="topic">clips</set>
+        </think>
+         Опиши мне, какую ты хочешь. Например, быструю и дорогую или экономичную и вместительную./CLIPS
+      </template>
+    </category>
+  </topic>
+  <topic name="машинах">
+    <category>
+      <pattern> ПОМОГИ МНЕ ПОДОБРАТЬ МАШИНУ </pattern>
+      <template>Не проблема! <srai>CLIPSACTIVATED</srai></template>
+    </category>
+  </topic>
+  <topic name="машинах">
+    <category>
+      <pattern> * </pattern>
+      <template>А давай лучше я помогу тебе подобрать авто. <srai>CLIPSACTIVATED</srai></template>
+    </category>
+  </topic>
+  <topic name="машинах">
+    <category>
+      <pattern> ПОМОГИ ПОДОБРАТЬ МНЕ * </pattern>
+      <template>
+        <srai> ПОМОГИ МНЕ ПОДОБРАТЬ МАШИНУ </srai>
+      </template>
+    </category>
+  </topic>
+  <topic name="машинах">
+    <category>
+      <pattern> ДАВАЙ ВЫБЕРЕМ МНЕ * </pattern>
+      <template>
+        <srai> ПОМОГИ МНЕ ПОДОБРАТЬ МАШИНУ </srai>
+      </template>
+    </category>
+  </topic>
+
+  <topic name="машинах">
+    <category>
+      <pattern> ВЫБЕРЕМ МНЕ * </pattern>
+      <template>
+        <srai> ПОМОГИ МНЕ ПОДОБРАТЬ МАШИНУ </srai>
       </template>
     </category>
   </topic>
