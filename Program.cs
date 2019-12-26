@@ -24,7 +24,7 @@ namespace resultproject
             string pathToFileKey = "config/bot_key";
             string accessToken = LoadKey(pathToFileKey);
 
-            var proxy = new WebProxy("51.91.212.159:3128"); // 51.158.111.229:8811 | 51.158.186.141:8080
+            var proxy = new WebProxy("51.91.212.159:3128"); // 51.158.111.229:8811 | 51.158.186.141:8080 | 51.91.212.159:3128
 
             TelegramBot tb = new TelegramBot(accessToken, proxy);
             tb.Run();
