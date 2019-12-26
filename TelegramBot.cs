@@ -224,15 +224,6 @@ namespace resultproject
             Console.WriteLine(imgMat.NumberOfChannels);
             CvInvoke.CvtColor(imgMat, imgMat, ColorConversion.Bgr2Gray);
 
-            Mat blurred = new Mat();
-            double sigma = 1;
-            double amount = 1;
-            CvInvoke.GaussianBlur(imgMat, blurred, new Size(), sigma, sigma);
-            Mat lowContrastMask = new Mat();
-            CvInvoke.AbsDiff(imgMat, blurred, lowContrastMask);
-            Mat sharped = imgMat * (1 + amount) + blurred * (-1 * amount);
-            imgMat.CopyTo(sharped, lowContrastMask);
-            // imgMat = sharped;
             CvInvoke.Threshold(imgMat, imgMat, 125, 255, Emgu.CV.CvEnum.ThresholdType.Binary);
             CvInvoke.BitwiseNot(imgMat, imgMat);
             Size size = new Size(28, 28);
