@@ -223,19 +223,31 @@ namespace resultproject
             Mat imgMat = ImgToMat(img);
             Console.WriteLine(imgMat.NumberOfChannels);
             CvInvoke.CvtColor(imgMat, imgMat, ColorConversion.Bgr2Gray);
+
+            Mat blurred = new Mat();
+            double sigma = 1;
+            double amount = 1;
+            CvInvoke.GaussianBlur(imgMat, blurred, new Size(), sigma, sigma);
+            Mat lowContrastMask = new Mat();
+            CvInvoke.AbsDiff(imgMat, blurred, lowContrastMask);
+            Mat sharped = imgMat * (1 + amount) + blurred * (-1 * amount);
+            imgMat.CopyTo(sharped, lowContrastMask);
+            // imgMat = sharped;
             CvInvoke.Threshold(imgMat, imgMat, 125, 255, Emgu.CV.CvEnum.ThresholdType.Binary);
             CvInvoke.BitwiseNot(imgMat, imgMat);
-            Size size = new Size(270, 270);
+            Size size = new Size(28, 28);
             CvInvoke.Resize(imgMat, imgMat, size, 1, 1, Emgu.CV.CvEnum.Inter.Linear);
             imgMat.Save("../../../test.jpg");
             Console.WriteLine(imgMat.Size);
             Console.WriteLine(imgMat.NumberOfChannels);
 
             double[] netInput = new double[size.Width * size.Height];
-            for (int i = 0; i < netInput.Length; i++)
-                netInput[i] = 0.0;
+            for (int i = 0; i < size.Width; i++)
+                for (int j = 0; j < size.Height; j++)
+                    netInput[i  + j * 28] = imgMat.Bitmap.GetPixel(i, j).B;
 
             Sample sample = new Sample(netInput);
+            Console.WriteLine(sample.input.Length);
             var result = Net.Predict(sample);
 
             await botClient.SendTextMessageAsync(

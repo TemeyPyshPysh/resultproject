@@ -267,6 +267,8 @@ namespace NeuralNetwork1
         public override double[, ] Forward(double[, ] input)
         {
             this.cache = new Cache(input, weights, biases);
+            Console.WriteLine(input.Length);
+            Console.WriteLine(weights.Length);
             double[,] output = input.Dot(weights);
             output = output.Add(biases.Transpose());
             return output;
